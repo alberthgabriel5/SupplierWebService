@@ -1,0 +1,89 @@
+<?xml version ='1.0' encoding ='UTF-8' ?>
+<definitions name='Scramble' 
+  targetNamespace='http://localhost/SupplierWebService/scramble.wsdl' 
+  xmlns:tns='http://localhost/SupplierWebService/scramble.wsdl' 
+  xmlns:soap='http://schemas.xmlsoap.org/wsdl/soap/' 
+  xmlns='http://schemas.xmlsoap.org/wsdl/'> 
+
+<message name='sumarRequest'> 
+  <part name='symbol' type='xsd:string'/> 
+  <part name='symbol2' type='xsd:string'/> 
+</message> 
+<message name='sumarResponse'> 
+  <part name='Result' type='xsd:string'/> 
+</message> 
+<message name='restarRequest'> 
+  <part name='symbol' type='xsd:string'/> 
+  <part name='symbol2' type='xsd:string'/> 
+</message> 
+<message name='restarResponse'> 
+  <part name='Result' type='xsd:string'/> 
+</message> 
+<message name='purchaseRequest'> 
+  <part name='symbol' type='xsd:string'/> 
+  <part name='symbol2' type='xsd:string'/> 
+  <part name='symbol3' type='xsd:string'/> 
+</message> 
+<message name='purchaseResponse'> 
+  <part name='Result' type='xsd:string'/> 
+</message> 
+
+<portType name='ScramblePortType'> 
+  <operation name='sumar'>
+    <input message='tns:sumarRequest'/> 
+    <output message='tns:sumarResponse'/>   
+  </operation>
+  <operation name='restar'>
+    <input message='tns:restarRequest'/> 
+    <output message='tns:restarResponse'/>   
+  </operation>    
+  <operation name='purchase'>
+    <input message='tns:purchaseRequest'/> 
+    <output message='tns:purchaseResponse'/>   
+  </operation>    
+</portType> 
+
+<binding name='ScrambleBinding' type='tns:ScramblePortType'> 
+  <soap:binding style='rpc' 
+    transport='http://schemas.xmlsoap.org/soap/http'/> 
+  <operation name='sumar'> 
+    <soap:operation soapAction='urn:localhost-scramble#sumar'/> 
+    <input> 
+      <soap:body use='encoded' namespace='urn:localhost-scramble' 
+        encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'/> 
+    </input> 
+    <output> 
+      <soap:body use='encoded' namespace='urn:localhost-scramble' 
+        encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'/> 
+    </output> 
+  </operation>
+  <operation name='restar'> 
+    <soap:operation soapAction='urn:localhost-scramble#restar'/> 
+    <input> 
+      <soap:body use='encoded' namespace='urn:localhost-scramble' 
+        encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'/> 
+    </input> 
+    <output> 
+      <soap:body use='encoded' namespace='urn:localhost-scramble' 
+        encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'/> 
+    </output> 
+  </operation>       
+  <operation name='purchase'> 
+    <soap:operation soapAction='urn:localhost-scramble#purchase'/> 
+    <input> 
+      <soap:body use='encoded' namespace='urn:localhost-scramble' 
+        encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'/> 
+    </input> 
+    <output> 
+      <soap:body use='encoded' namespace='urn:localhost-scramble' 
+        encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'/> 
+    </output> 
+  </operation>       
+</binding> 
+
+<service name='ScrambleService'> 
+  <port name='ScramblePort' binding='ScrambleBinding'> 
+    <soap:address location='http://localhost/SupplierWebService/purchaseWeb.php'/> 
+  </port> 
+</service>
+</definitions> 
