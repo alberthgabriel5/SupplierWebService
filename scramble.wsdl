@@ -23,6 +23,7 @@
   <part name='symbol' type='xsd:string'/> 
   <part name='symbol2' type='xsd:string'/> 
   <part name='symbol3' type='xsd:string'/> 
+  <part name='symbol4' type='xsd:string'/>  
 </message> 
 <message name='purchaseResponse'> 
   <part name='Result' type='xsd:string'/> 

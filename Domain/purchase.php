@@ -6,23 +6,39 @@
 class purchase
 {
     private $idPurchase;
+    private $billNum;
+    private $idProduct;
     private $idSupplier;
     private $datePurchase;
-    private $descriptionPurchase;
-    private $idProduct;
+    private $descriptionPurchase;    
     private $totalPurchase;
+    private $grossPrice;
+    private $netPrice;
+    private $canceled;
+    private $recived;
     
-    function purchase( $idSupplier, $datePurchase, $descriptionPurchase, $idProduct, $totalPurchase) {
-        
-        $this->idSupplier = $idSupplier;
-        $this->datePurchase = $datePurchase;
-        $this->descriptionPurchase = $descriptionPurchase;
-        $this->idProduct = $idProduct;
-        $this->totalPurchase = $totalPurchase;
+    function __construct() {
+        $this->billNum = 0;
+        $this->idProduct = 0;
+        $this->idSupplier = 0;
+        $this->datePurchase = date('Y-m-d');
+        $this->descriptionPurchase = 0;
+        $this->totalPurchase = 0;
+        $this->grossPrice = 0;
+        $this->netPrice = 0;
+        $this->recived = 0;
     }
-    
+
     public function getIdPurchase() {
         return $this->idPurchase;
+    }
+
+    public function getBillNum() {
+        return $this->billNum;
+    }
+
+    public function getIdProduct() {
+        return $this->idProduct;
     }
 
     public function getIdSupplier() {
@@ -37,16 +53,36 @@ class purchase
         return $this->descriptionPurchase;
     }
 
-    public function getIdProduct() {
-        return $this->idProduct;
-    }
-
     public function getTotalPurchase() {
         return $this->totalPurchase;
     }
 
+    public function getGrossPrice() {
+        return $this->grossPrice;
+    }
+
+    public function getNetPrice() {
+        return $this->netPrice;
+    }
+
+    public function getCanceled() {
+        return $this->canceled;
+    }
+
+    public function getRecived() {
+        return $this->recived;
+    }
+
     public function setIdPurchase($idPurchase) {
         $this->idPurchase = $idPurchase;
+    }
+
+    public function setBillNum($billNum) {
+        $this->billNum = $billNum;
+    }
+
+    public function setIdProduct($idProduct) {
+        $this->idProduct = $idProduct;
     }
 
     public function setIdSupplier($idSupplier) {
@@ -61,14 +97,28 @@ class purchase
         $this->descriptionPurchase = $descriptionPurchase;
     }
 
-    public function setIdProduct($idProduct) {
-        $this->idProduct = $idProduct;
-    }
-
     public function setTotalPurchase($totalPurchase) {
         $this->totalPurchase = $totalPurchase;
     }
 
+    public function setGrossPrice($grossPrice) {
+        $this->grossPrice = $grossPrice;
+    }
+
+    public function setNetPrice($netPrice) {
+        $this->netPrice = $netPrice;
+    }
+
+    public function setCanceled($canceled) {
+        $this->canceled = $canceled;
+    }
+
+    public function setRecived($recived) {
+        $this->recived = $recived;
+    }
 
 
+    
+    
+    
 }

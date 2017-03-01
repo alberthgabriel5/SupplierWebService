@@ -10,16 +10,16 @@ function restar($a,$b)
 	return $a-$b;
 }
 
-function purchase($description,$idProduct,$quantity){
+function purchase($idProduct,$quantity,$porcent,$pay){
 include_once './Data/purchaseData.php';
 include_once './Domain/purchase.php';
-$purchase = new purchase(0,'NOW()',$description, $idProduct, $quantity);
-$purchase->setIdPurchase(0);
-$purchase->setIdSupplier(1);
-$purchase->setDatePurchase(getdate());
-$purchase->setDescriptionPurchase($description);
-$purchase->setTotalPurchase($quantity);
 $data= new purchaseData();
+$purchase = new purchase();
+$purchase->setIdSupplier($data->getIdSupplier($idProduct));
+$purchase->setTotalPurchase($quantity);
+$purchase->setNetPrice($data->getPrice($idProduct));
+$purchase->setGrossPrice((int)($data->getPrice($idProduct))*(int)($porcent));
+$purchase->setCanceled($pay);
 $insert=$data->insertPurchase($purchase);
 
 if($insert){
