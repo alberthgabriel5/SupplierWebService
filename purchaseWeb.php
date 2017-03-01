@@ -10,26 +10,24 @@ function restar($a,$b)
 	return $a-$b;
 }
 
-function purchase($idProduct,$quantity,$porcent,$pay){
-include_once './Data/purchaseData.php';
-include_once './Domain/purchase.php';
-$data= new purchaseData();
-$purchase = new purchase();
-$purchase->setIdSupplier($data->getIdSupplier($idProduct));
-$purchase->setTotalPurchase($quantity);
-$purchase->setNetPrice($data->getPrice($idProduct));
-$purchase->setGrossPrice((int)($data->getPrice($idProduct))*(int)($porcent));
-$purchase->setCanceled($pay);
-$insert=$data->insertPurchase($purchase);
+function purchase($idProduct, $quantity, $pay) {
+    include_once './Data/purchaseData.php';
+    include_once './Domain/purchase.php';
+    $data = new purchaseData();
+    $purchase = new purchase();
+    $purchase->setIdProduct($idProduct);    
+    $purchase->setTotalPurchase($quantity);
+    $purchase->setNetPrice($data->getPrice($idProduct));
+    $purchase->setGrossPrice((int) ($data->getPrice($idProduct)) * 7);
+    $purchase->setCanceled($pay);
+    $insert = $data->insertPurchase($purchase);
 
-if($insert){
-    return "sucess";
-}else
-{
-    return "errorSQL";
-}
-
-
+    if ($insert) {
+        return "sucess";
+    } else {
+        return "errorSQL";
+    }
+    return "errorData";
 }
        
 
@@ -46,3 +44,6 @@ $server->addFunction("purchase");
 $server->handle();
 
 ?>
+
+
+    

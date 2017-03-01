@@ -17,6 +17,7 @@
 <?php
 if(isset($_POST['a']) && isset($_POST['b']))
 {
+    
 	// turn off the WSDL cache
 	ini_set("soap.wsdl_cache_enabled", "0");
 	
@@ -25,11 +26,16 @@ if(isset($_POST['a']) && isset($_POST['b']))
 	$a = $_POST['a'];
 	$b = $_POST['b'];
 	
-	$resultado = $client->sumar($a,$b);
-	print("La suma de los numeros : $a + $b es:  $resultado <br>");
+	$result = $client->sumar($a,$b);
+	print("<br>La suma de los numeros : $a + $b es:  $result <br>");	
+        
 	
-	$resultado = $client->restar($a,$b);
-	print("La resta de los numeros : $a - $b es: $resultado");
+        
+        $resultado = $client->restar($a,$b);
+	print("<br>La resta de los numeros : $a - $b es: $resultado");
+        
+        $resultado = $client->purchase('1','10','1');
+        echo "<br>REQUEST:\n" . $resultado  . "\n";
 }
 
 ?>

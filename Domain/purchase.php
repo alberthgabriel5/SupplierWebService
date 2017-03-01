@@ -17,7 +17,7 @@ class purchase
     private $canceled;
     private $recived;
     
-    function __construct() {
+    function purchase() {
         $this->billNum = 0;
         $this->idProduct = 0;
         $this->idSupplier = 0;
