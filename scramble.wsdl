@@ -27,6 +27,14 @@
 <message name='purchaseResponse'> 
   <part name='Result' type='xsd:string'/> 
 </message> 
+<message name='compraRequest'> 
+  <part name='symbol1' type='xsd:string'/> 
+  <part name='symbol2' type='xsd:string'/> 
+  <part name='symbol3' type='xsd:string'/> 
+</message> 
+<message name='compraResponse'> 
+  <part name='Result' type='xsd:string'/> 
+</message> 
 
 <portType name='ScramblePortType'> 
   <operation name='sumar'>
@@ -36,11 +44,15 @@
   <operation name='restar'>
     <input message='tns:restarRequest'/> 
     <output message='tns:restarResponse'/>   
-  </operation>    
+  </operation>     
   <operation name='purchase'>
     <input message='tns:purchaseRequest'/> 
     <output message='tns:purchaseResponse'/>   
-  </operation>    
+  </operation>  
+   <operation name='compra'>
+    <input message='tns:compraRequest'/> 
+    <output message='tns:compraResponse'/>   
+  </operation>   
 </portType> 
 
 <binding name='ScrambleBinding' type='tns:ScramblePortType'> 
@@ -78,6 +90,17 @@
       <soap:body use='encoded' namespace='urn:localhost-scramble' 
         encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'/> 
     </output> 
+  </operation> 
+  <operation name='compra'> 
+    <soap:operation soapAction='urn:localhost-scramble#compra'/> 
+    <input> 
+      <soap:body use='encoded' namespace='urn:localhost-scramble' 
+        encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'/> 
+    </input> 
+    <output> 
+      <soap:body use='encoded' namespace='urn:localhost-scramble' 
+        encodingStyle='http://schemas.xmlsoap.org/soap/encoding/'/> 
+    </output> 
   </operation>       
 </binding> 
 
@@ -86,4 +109,4 @@
     <soap:address location='http://localhost/SupplierWebService/purchaseWeb.php'/> 
   </port> 
 </service>
-</definitions> 
+</definitions>
