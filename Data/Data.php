@@ -18,7 +18,7 @@ class Data {
         $this->server = "localhost";
         $this->user = "root";
         $this->password = "";
-        $this->db = "mgasoluciones";
+        $this->db = "mgasoluciones1";
     }
     
 }
